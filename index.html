@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piloto | Cadastro centralizado de demandas</title>
+<link rel="stylesheet" href="css/styles.css">
+<style id="letterStyles">
+:root {
+  --letter-green: #00843d;
+  --letter-blue: #232e69
+}
+.letter-paper {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #171717;
+  max-width: 780px;
+  min-height: 900px;
+  padding: 34px 46px 26px;
+  margin: 16px auto;
+  background: #fff;
+  border: 1px solid #e4e8ea;
+  box-shadow: 0 6px 20px #19384d12;
+  font-size: 13px;
+  line-height: 1.55
+}
+.letter-paper {
+  position: relative;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJAAAAQaCAYAAACsIvEVAAAOcUlEQVR4Xu3SoXUVARRF0ZSQEhAUkAIQSBwYKkDhEFgkPhgMTVECJaSDYVa+gDUHc9FbbHPek/fuOI47+F8JsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJ3Lx8//3x4ePXp1dfPv968+3Dw/XOTQLH3Yu3Px7OAR3ngI5zQMc5oJ/XH24SeB7Q68uAjusPNwkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsEDGiRgAEtEjCgRQIGtEjAgBYJGNAiAQNaJGBAiwQMaJGAAS0SMKBFAga0SMCAFgkY0CIBA1okYECLBAxokYABLRIwoEUCBrRIwIAWCRjQIgEDWiRgQIsE/jmgp+sPNwk8D+j+HNDTXwN6vP5wk8DNOaD7c0CfzgG9u974IwEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTAIgEWCbBIgEUCLBJgkQCLBFgkwCIBFgmwSIBFAiwSYJEAiwRYJMAiARYJsEiARQIsEmCRAIsEWCTA4jfiaVbTmoNGLgAAAABJRU5ErkJggg==");
+  background-repeat: no-repeat;
+  background-position: left 8px top 8px;
+  background-size: 2px calc(100% - 16px)
+}
+.letter-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 3px solid #1d704e;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+  color: #175a3d
+}
+.letter-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid var(--letter-green);
+  padding: 0 0 10px;
+  margin-bottom: 24px;
+  min-height: 65px
+}
+
+.letter-brand img {
+  display: block;
+  width: 100%;
+  max-height: 76px;
+  object-fit: contain
+}
+.letter-number {
+  font-weight: 700;
+  margin-bottom: 17px
+}
+
+.letter-date {
+  text-align: right;
+  margin: 0 0 28px
+}
+
+.letter-recipient {
+  line-height: 1.45;
+  margin: 0 0 22px
+}
+
+.letter-recipient b {
+  display: block;
+  margin-top: 7px;
+  text-transform: uppercase
+}
+
+.letter-salutation {
+  margin: 0 0 10px
+}
+
+.letter-body p {
+  margin: 0 0 10px;
+  text-align: justify;
+  text-indent: 24px;
+  line-height: 1.52
+}
+
+.letter-closing {
+  margin: 20px 0 24px
+}
+
+.closing-edit {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 230px;
+  outline: none
+}
+
+.closing-edit:focus {
+  outline: 1px dashed #7a9b8c;
+  outline-offset: 2px
+}
+
+.letter-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  margin-bottom: 28px
+}
+
+.letter-signature i {
+  margin-bottom: 8px
+}
+
+.letter-signature b {
+  text-transform: uppercase
+}
+
+.letter-footer {
+  border-top: 1px solid #9ab5a7;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: #385a49;
+  font-size: 9px;
+  line-height: 1.45
+}
+
+.letter-footer .contact {
+  text-align: right
+}
+.letter-footer {
+  align-items: center;
+  border-top: 2px solid var(--letter-green)
+}
+
+.letter-footer img {
+  display: block;
+  width: min(43%, 250px);
+  max-height: 68px;
+  object-fit: contain;
+  object-position: left center
+}
+
+.letter-footer .contact {
+  font-size: 8px
+}
+@media (max-width:1050px) {
+  .letter-paper {
+    max-width: 100%
+  }
+}
+@media (max-width:680px) {
+  .letter-paper {
+    padding: 22px 18px;
+    min-height: auto;
+    font-size: 12px
+  }
+
+  .letter-footer {
+    font-size: 8px;
+    gap: 8px
+  }
+}
+@page {
+  size: A4;
+  margin: 3.5cm 2cm 4cm 3cm;
+
+  @top-center {
+    content: element(letterhead)
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden !important
+  }
+
+  .letter-paper,
+  .letter-paper * {
+    visibility: visible !important
+  }
+
+  .letter-paper {
+    position: static;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    background-image: none;
+    font-size: 11pt
+  }
+
+  .letter-brand {
+    position: running(letterhead);
+    display: flex;
+    top: auto;
+    left: auto;
+    right: auto;
+    height: 2.8cm;
+    min-height: 0;
+    margin: 0 0 1.1cm;
+    padding: 0 0 5px;
+    background: #fff
+  }
+
+  .letter-brand img {
+    max-height: 2.55cm
+  }
+
+  .closing-edit {
+    width: 230px;
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    outline: none !important
+  }
+
+  .letter-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -3.65cm;
+    height: 2.7cm;
+    margin: 0;
+    padding: 5px 0 0;
+    background: #fff
+  }
+
+  .letter-footer img {
+    max-height: 2.3cm
+  }
+
+  .letter-footer .contact {
+    font-size: 7pt
+  }
+
+  .letter-number {
+    margin-top: 0
+  }
+
+  .letter-body p {
+    break-inside: avoid
+  }
+
+  .letter-signature {
+    break-inside: avoid
+  }
+
+  .designsTabPanel {
+    display: none !important
+  }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar"><div class="brand"><div class="brandmark">▦</div><span>CHEFIA DE GABINETE <span style="opacity:.55;font-weight:400">/</span> Gestão de demandas</span></div></header>
+<div class="layout">
+<aside><div class="nav-caption">Acompanhamento</div><button class="nav-item active" data-view="Painel geral"><span class="ico">▦</span>Painel geral</button><button class="nav-item" data-view="Ofícios"><span class="ico">✉</span>Ofícios</button><button class="nav-item" data-view="Documentos"><span class="ico">▤</span>Documentos</button><button class="nav-item" data-view="Modelos de design"><span class="ico">▧</span>Modelos de design</button><div class="nav-caption" style="margin-top:20px">Referência</div><button class="nav-item" data-view="Fluxo"><span class="ico">⇄</span>Fluxo</button><div class="side-note"><strong>Importante</strong>O SIGED continua sendo o sistema oficial de registro e tramitação. Este painel é apenas uma proposta de apoio.</div></aside>
+<main class="main"><div class="breadcrumb" id="breadcrumb">Início <span style="padding:0 6px">/</span> Piloto de cadastro centralizado</div><div class="heading" id="dashboardHeading"><div><h1>Painel de demandas</h1><p>Acompanhe registros, responsáveis e prazos.</p></div><button class="primary" id="openModal"><span class="button-ico">＋</span>Nova demanda</button></div>
+<div class="notice" id="dashboardNotice"><span class="notice-icon">ⓘ</span><div><p>O cadastro é auxiliar e não substitui o SIGED. Nenhuma conexão automática está configurada; os registros e alertas dependem de conferência humana.</p></div></div>
+<section class="cards" id="demandCards"><div class="card"><div class="card-label">Demandas registradas <span class="card-icon">☷</span></div><div class="metric" id="totalMetric">24</div><div class="card-foot">registros acompanhados</div></div><div class="card"><div class="card-label">Em andamento <span class="card-icon">◷</span></div><div class="metric" id="progressMetric">9</div><div class="card-foot">com responsável atribuído</div></div><div class="card"><div class="card-label">Vencem em até 3 dias <span class="card-icon" style="background:#fff5e1;color:#a37117">⚑</span></div><div class="metric" id="soonMetric">3</div><div class="card-foot"><span class="urgent">Requerem atenção</span> — conferir no SIGED</div></div><div class="card"><div class="card-label">Concluídas <span class="card-icon" style="background:#eaf6f0;color:#32816c">✓</span></div><div class="metric" id="doneMetric">12</div><div class="card-foot">conforme atualização da equipe</div></div></section>
+<div class="content-grid" id="demandGrid"><section class="panel"><div class="panel-head"><div><h2>Cadastro centralizado</h2><div class="sub">Amostra de registros para acompanhamento interno</div></div><span style="font-size:11px;color:#82919c">Atualizado hoje, 09:15</span></div><div class="filters"><label class="search"><span>⌕</span><input id="searchInput" placeholder="Buscar assunto ou número..."></label><select id="statusFilter"><option value="">Todas as situações</option><option>Em andamento</option><option>Aguardando retorno</option><option>Concluída</option><option>Prazo próximo</option></select><select id="areaFilter"><option value="">Todas as áreas</option><option>Protocolo</option><option>Agenda</option><option>Administrativo</option><option>Gabinete</option><option>DAF</option><option>DIPLAE</option><option>DVE</option><option>DVACD</option><option>DEVISA</option><option>DVHQ</option><option>DEPI</option><option>LACEN</option><option>LAFRON</option></select></div><div class="table-wrap"><table><thead><tr><th>Demanda / referência</th><th>Área</th><th>Responsável</th><th>Prazo</th><th>Situação</th><th></th></tr></thead><tbody id="demandRows"></tbody></table></div><div class="table-foot"><span id="rowCount">Exibindo 5 registros de exemplo</span><span>Dados cadastrados para acompanhamento</span></div></section>
+<div class="right-col"><section class="panel"><div class="panel-head"><div><h2>Alertas de acompanhamento</h2><div class="sub">Lembretes para validação pela equipe</div></div><span style="background:#fff3dd;color:#98680e;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:800">3 ATENÇÃO</span></div><div class="alert-list"><div class="alert"><div class="alert-mark red">!</div><div><div class="alert-title">Prazo próximo: documento para assinatura</div><div class="alert-copy">Conferir envio com antecedência prevista.</div><div class="alert-time">Hoje · Demanda DEM-024</div></div></div><div class="alert"><div class="alert-mark">◷</div><div><div class="alert-title">Devolução de documento assinado</div><div class="alert-copy">Lembrete de controle do prazo de até 72 horas.</div><div class="alert-time">Amanhã · Demanda DEM-021</div></div></div><div class="alert"><div class="alert-mark blue">✈</div><div><div class="alert-title">Providência de viagem</div><div class="alert-copy">Verificar antecedência e documentos necessários.</div><div class="alert-time">Em 3 dias · Demanda DEM-018</div></div></div></div></section>
+<section class="panel"><div class="panel-head"><div><h2>Fluxo</h2><div class="sub">Apoio de controle, com etapas humanas</div></div></div><div class="workflow"><div class="flow-step"><div class="step-no">1</div><div class="step-text"><strong>Registrar / consultar no SIGED</strong><br>O sistema oficial permanece a fonte do processo.</div></div><div class="flow-step"><div class="step-no">2</div><div class="step-text"><strong>Conferir e cadastrar</strong><br>Equipe registra referência, responsável e prazo.</div></div><div class="flow-step"><div class="step-no">3</div><div class="step-text"><strong>Receber lembrete</strong><br>Piloto sinaliza datas próximas para revisão.</div></div><div class="flow-step"><div class="step-no">4</div><div class="step-text"><strong>Validar e agir no SIGED</strong><br>Responsável confirma a situação e executa a providência.</div></div><div class="siged-note"><b>Sem integração automática:</b> não há leitura, escrita ou envio de dados ao SIGED neste protótipo.</div></div></section></div></div>
+
+<section id="documentView" class="doc-view" style="display:none">
+<div class="heading"><div><h1>Documentos</h1><p>Modelos, elaboração, anexos e acompanhamento documental.</p></div></div>
+<div class="vocative-bar doc-tabs" role="tablist" aria-label="Áreas de documentos"><button class="vocative-tab active" type="button" data-doc-tab="catalog" role="tab" aria-selected="true">Catálogo de modelos</button><button class="vocative-tab" type="button" data-doc-tab="editor" role="tab" aria-selected="false">Editor e anexos</button><button class="vocative-tab" type="button" data-doc-tab="queues" role="tab" aria-selected="false">Filas de acompanhamento</button></div>
+<section id="docCatalogPanel" class="panel doc-panel" role="tabpanel"><div class="panel-head"><div><h2>Escolha um modelo documental</h2><div class="sub">Selecione um tipo para iniciar a elaboração.</div></div></div><div class="doc-catalog" id="docCatalog"></div></section>
+<section id="docEditorPanel" class="panel doc-panel" role="tabpanel" style="display:none"><div class="panel-head"><div><h2>Elaboração do documento</h2><div class="sub">Preencha o conteúdo, indique signatários e anexe arquivos.</div></div><span class="preview-tag" id="selectedModelTag">Sem modelo selecionado</span></div><form id="docEditorForm" class="doc-editor"><div class="field"><label for="docType">Tipo documental</label><select id="docType" required></select></div><div class="field"><label for="docTitle">Título / assunto</label><input id="docTitle" required placeholder="Assunto do documento"></div><div class="field full"><label for="docSummary">Ementa / resumo</label><textarea id="docSummary" rows="2" placeholder="Resumo breve para identificar o documento"></textarea></div><div class="field full"><label for="docContent">Conteúdo do documento</label><textarea id="docContent" rows="7" placeholder="Redija o conteúdo do documento"></textarea></div><div class="field full"><label>Autoridades signatárias</label><div class="signer-list" id="signerList"></div><button type="button" class="secondary" id="addSigner" style="justify-self:start;margin-top:7px">＋ Adicionar autoridade</button><small class="hint">Indique nome e cargo de cada autoridade. A sinalização de assinatura é apenas demonstrativa.</small></div><div class="field full"><label for="docAttachments">Anexos</label><input id="docAttachments" type="file" multiple><div id="attachmentList" class="attachment-list">Nenhum anexo selecionado.</div><small class="hint">Os nomes dos anexos ficam vinculados ao registro local; os arquivos não são enviados a nenhum sistema.</small></div><div class="doc-actions full"><button type="button" class="secondary" id="docCancel">Cancelar elaboração</button><button type="button" class="secondary" data-save-status="Cancelado">Cancelar documento</button><button type="button" class="secondary" data-save-status="Pendente de assinatura">Enviar para assinatura</button><button type="button" class="secondary" data-save-status="Documento registrado">Registrar documento</button><button type="button" class="primary" data-save-status="Rascunho">Salvar rascunho</button></div></form></section>
+<section id="docQueuesPanel" class="panel doc-panel" role="tabpanel" style="display:none"><div class="panel-head"><div><h2>Filas de acompanhamento</h2><div class="sub">Ações para documentos e assinaturas.</div></div></div><div class="vocative-bar doc-queue-tabs" role="tablist" aria-label="Filas"><button class="vocative-tab active" type="button" data-queue="Rascunho" role="tab" aria-selected="true">Rascunhos</button><button class="vocative-tab" type="button" data-queue="Documento registrado" role="tab" aria-selected="false">Documentos</button><button class="vocative-tab" type="button" data-queue="Pendente de assinatura" role="tab" aria-selected="false">Pendências</button><button class="vocative-tab" type="button" data-queue="Cancelado" role="tab" aria-selected="false">Cancelados</button></div><div id="docQueueList"></div></section>
+<div class="siged-note"><b>Observação:</b> filas e registros são demonstrativos e ficam neste navegador. Não há integração com IOANEWS ou SIGED e não substituem o trâmite oficial.</div>
+</section>
+<section id="designsTabPanel" role="tabpanel" style="display:none;margin-top:18px"><section class="panel"><div class="panel-head"><div><h2>Modelos de design</h2><div class="sub">O modelo FVS-RCP anexado está definido como padrão. Você pode cadastrar outros cabeçalhos e aplicar um deles ao ofício.</div></div><span class="status s-done">Padrão: FVS-RCP</span></div><div class="design-manager"><div class="design-form"><h3>Inserir modelo</h3><label for="designName">Nome do modelo</label><input id="designName" maxlength="60" placeholder="Ex.: Novo padrão institucional"><div class="design-colors"><div><label for="designPrimary">Cor principal</label><input id="designPrimary" type="color" value="#00843d"></div><div><label for="designAccent">Cor de apoio</label><input id="designAccent" type="color" value="#232e69"></div></div><label for="designHeaderFile">Imagem de cabeçalho (PNG/JPG)</label><input id="designHeaderFile" type="file" accept="image/png,image/jpeg"><label for="designFooterFile">Imagem de rodapé (opcional)</label><input id="designFooterFile" type="file" accept="image/png,image/jpeg"><p class="hint">As imagens e escolhas ficam salvas neste navegador. Não são enviadas ao SIGED nem a outros sistemas.</p><button id="saveDesign" type="button" class="primary">Adicionar modelo</button></div><div class="design-list-panel"><h3>Modelos disponíveis</h3><div id="designList" class="design-list"></div></div></div></section></section>
+<section id="lettersView" style="display:none">
+<div class="heading"><div><h1>Ofícios do gabinete</h1><p>Elaboração e revisão de ofícios.</p></div></div><div class="vocative-bar letter-tabs" role="tablist" aria-label="Seções de ofícios"><button type="button" class="vocative-tab active" role="tab" aria-selected="true" data-letter-tab="compose">Modelo padronizado</button><button type="button" class="vocative-tab" role="tab" aria-selected="false" data-letter-tab="reviewing">Ofícios em revisão</button><button type="button" class="vocative-tab" role="tab" aria-selected="false" data-letter-tab="reviewed">Ofícios revisados</button></div><div id="composeTabPanel" role="tabpanel">
+<div class="letters-layout"><section class="panel"><div class="panel-head"><div><h2>Dados do ofício</h2><div class="sub">Campos editáveis inspirados no documento anexado</div></div></div>
+<form id="letterForm" class="letter-form"><div class="field"><label for="letterSector">Setor emissor</label><select id="letterSector"><option>DIPRE</option><option>DAF</option><option>GRH</option><option>GAB</option><option>PROTOCOLO</option></select></div><div class="field"><label for="letterYear">Ano</label><input id="letterYear" type="number" min="2020" max="2100"></div>
+<div class="field full"><label>Número previsto (setor/ano)</label><div id="numberPreview" class="number-preview"></div><small class="hint">DIPRE inicia após 3.020/2026 (referência do modelo); demais setores iniciam em 0001. Sequência ilustrativa, sem validade oficial.</small></div>
+<div class="field"><label for="letterDate">Local e data</label><input id="letterDate" value="Manaus, "></div><div class="field"><label for="letterRecipient">Destinatário</label><input id="letterRecipient" value="NOME DO DESTINATÁRIO"></div><div class="field"><label for="letterRole">Cargo</label><input id="letterRole" placeholder="Cargo do destinatário"></div><div class="field"><label for="letterInstitution">Instituição</label><input id="letterInstitution" placeholder="Órgão ou instituição"></div><div class="field full"><label for="letterAddress">Endereço</label><input id="letterAddress" placeholder="Logradouro e bairro"></div><div class="field"><label for="letterZip">CEP</label><input id="letterZip" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9"></div><div class="field"><label for="letterCity">Cidade/UF</label><input id="letterCity" placeholder="Município/UF"></div><div class="field full"><label>Escolha do vocativo</label><div class="vocative-bar" id="vocativeBar" role="tablist" aria-label="Categorias de vocativos"><button class="vocative-tab active" type="button" role="tab" aria-selected="true" data-category="padrao">Padrão</button><button class="vocative-tab" type="button" role="tab" aria-selected="false" data-category="autoridades">Autoridades</button><button class="vocative-tab" type="button" role="tab" aria-selected="false" data-category="justica">Justiça e controle</button><button class="vocative-tab" type="button" role="tab" aria-selected="false" data-category="instituicoes">Instituições</button><button class="vocative-tab" type="button" role="tab" aria-selected="false" data-category="tradicionais">Tradicionais</button></div><select id="letterSalutationChoice" aria-label="Selecionar vocativo"></select><input id="letterSalutation" aria-label="Texto do vocativo, editável" value="Senhor(a),"><small class="vocative-help">A forma padrão recomendada é “Senhor(a) + cargo”. Fórmulas tradicionais são mantidas para compatibilidade; confira o manual de redação e o protocolo do órgão destinatário.</small></div><div class="field full"><label for="letterBody">Texto do ofício (um parágrafo por linha)</label><textarea id="letterBody" rows="7">[Digite aqui o primeiro parágrafo.]
+[Digite aqui o segundo parágrafo, se necessário.]</textarea></div><div class="field"><label for="letterSigner">Signatário(a)</label><input id="letterSigner" value="TATYANA COSTA AMORIM RAMOS"></div><div class="field"><label for="letterTitle">Cargo</label><input id="letterTitle" value="Diretora-Presidente da FVS-RCP"></div><div class="form-actions"><button type="button" class="secondary" id="previewLetter">Atualizar prévia</button><button type="button" class="secondary" id="reserveNumber">Reservar número</button><button type="button" class="primary" id="sendToReview">Encaminhar para revisão</button></div></form></section>
+<section class="panel"><div class="panel-head"><div><h2>Modelo padronizado</h2><div class="sub">Estrutura visual adaptada do ofício anexado</div></div><span class="preview-tag">PRÉVIA</span></div><article id="letterPaper" class="letter-paper"><header class="letter-brand"><img id="letterheadImage" alt="Governo do Amazonas — FVS-RCP"></header><div class="letter-number" id="letterNumber"></div><p class="letter-date" id="letterDateOut"></p><div class="letter-recipient"><div>A Sua Senhoria o(a) Senhor(a),</div><b id="recipientOut"></b><div id="roleOut"></div><div id="institutionOut"></div><div id="addressOut"></div><div id="zipOut"></div><div id="cityOut"></div></div><p id="salutationOut" class="letter-salutation"></p><div id="bodyOut" class="letter-body"></div><p class="letter-closing"><input id="letterClosing" class="closing-edit" aria-label="Fecho do ofício" value="Respeitosamente,"></p><div class="letter-signature"><i>(Assinado Digitalmente)</i><b id="signerOut"></b><span id="titleOut"></span></div><footer class="letter-footer"><img id="letterFooterImage" alt="Identidade visual FVS-RCP"><div class="contact">dipre@fvs.am.gov.br<br>Fone: (92) 99332-3935<br>Torquato Tapajós, 4010 – Colônia Santo Antônio<br>Manaus – AM · CEP: 69093-018<br>CNPJ: 07.141.411/0001-46</div></footer></article><div class="siged-note letter-note"><b>Modelo editável:</b> revise texto, autoridade signatária, identidade visual e numeração conforme o padrão institucional vigente. A prévia não tramita nem assina o documento.</div></section></div></section><section id="reviewTabPanel" role="tabpanel" style="display:none;margin-top:18px"><section class="panel"><div class="panel-head"><div><h2 id="reviewListTitle">Ofícios em revisão</h2><div class="sub">Acompanhe os ofícios sinalizados para revisão.</div></div><span id="reviewStatus" class="status s-wait">Aguardando revisão</span></div><div style="padding:18px"><div class="notice" style="margin-bottom:16px"><span class="notice-icon">ⓘ</span><div><strong>Conferência antes da expedição</strong><p>Revise destinatário, vocativo, texto, identificação do signatário, formatação e numeração.</p></div></div><div id="reviewListEmpty" class="sub" style="margin-top:18px">Nenhum ofício nesta lista ainda.</div><div id="reviewList" style="margin-top:12px"></div></div></section></section><section id="reviewedTabPanel" role="tabpanel" style="display:none;margin-top:18px"><section class="panel"><div class="panel-head"><div><h2>Ofícios revisados</h2><div class="sub">Documentos cuja revisão foi concluída.</div></div></div><div style="padding:18px"><div id="reviewedListEmpty" class="sub">Nenhum ofício revisado ainda.</div><div id="reviewedList"></div></div></section></section></div>
+<div class="footer-note" id="footerNote">Proposta visual para avaliação da chefia · Uso real depende de aprovação institucional</div></main></div></div>
+<div class="modal-backdrop" id="modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><h2 id="modalTitle">Registrar demanda</h2><button class="close" id="closeModal" aria-label="Fechar">×</button></div><form class="form" id="demandForm"><div class="field"><label for="subject">Assunto</label><input id="subject" required placeholder="Ex.: documento para assinatura"></div><div class="field"><label for="ref">Referência SIGED (se aplicável)</label><input id="ref" placeholder="Ex.: 00000.000000/2026-00"></div><div class="field"><label for="area">Área</label><select id="area" required><option value="">Selecione</option><option>Protocolo</option><option>Agenda</option><option>Administrativo</option><option>Gabinete</option><option>DAF</option><option>DIPLAE</option><option>DVE</option><option>DVACD</option><option>DEVISA</option><option>DVHQ</option><option>DEPI</option><option>LACEN</option><option>LAFRON</option></select></div><div class="field"><label for="ownerInput">Responsável</label><input id="ownerInput" required placeholder="Nome do responsável"></div><div class="field"><label for="deadlineInput">Prazo de acompanhamento</label><input id="deadlineInput" type="date"></div><div class="field"><label for="demandStatus">Situação</label><select id="demandStatus" required><option>Não iniciado</option><option selected>Em andamento</option><option>Aguardando retorno</option><option>Concluída</option></select></div><div class="form-actions"><button type="button" class="secondary" id="cancelModal">Cancelar</button><button type="submit" class="primary">Registrar demanda</button></div></form></div></div><div class="toast" id="toast">Registro incluído apenas nesta demonstração.</div>
+<script src="js/letter-assets.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/designs.js"></script>
+<script src="js/letters.js"></script>
+<script src="js/documents.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/main.js"></script>
+</body></html>
