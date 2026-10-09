@@ -1,0 +1,47 @@
+name: Deploy do site (GitHub Pages)
+
+# Publica a subpasta piloto-gabinete/ como site estatico no GitHub Pages.
+# Roda automaticamente a cada push na branch main e tambem pode ser
+# disparado manualmente pela aba "Actions" (workflow_dispatch).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "piloto-gabinete/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publicar site estatico
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Empacotar a pasta do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: piloto-gabinete
+
+      - name: Fazer o deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
