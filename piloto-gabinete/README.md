@@ -78,6 +78,12 @@ https://alexandrinoa01.github.io/Projetos-/
 > (`enablement: true`); se a conta exigir, confirme em
 > **Settings → Pages → Source: GitHub Actions**.
 
+## Reexecutar o deploy
+
+Para publicar de novo sem alterar o código, use
+**Actions → Deploy do site (GitHub Pages) → Run workflow**
+(ou faça qualquer alteração dentro de `piloto-gabinete/` e envie para `main`).
+
 ## Escopo
 
 Protótipo de apoio visual. Não há integração automática com SIGED/IOANEWS, nem
